@@ -1,0 +1,10 @@
+@import './base/settings';
+@import './base/base';
+@import './components/header';
+@import './components/home';
+@import './components/logreg';
+@import './components/dashboard';
+@import './components/pharmacy';
+@import './components/product';
+
+@import '~bootstrap/scss/bootstrap.scss';
