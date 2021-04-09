@@ -1,0 +1,38 @@
+#responsive-navbar-nav {
+    justify-content: flex-end;
+}
+.navbar{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.nav-item {
+    display: inline;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    &:hover {
+        background-color: #111;
+    }
+}
+.nav-nav {
+    display: inline;
+    padding-top: 17px !important;
+    padding-bottom: 16px !important;
+    .btn{
+       &:hover{
+            opacity: 0.8;
+        }
+    }
+}
+
+.my-2 {
+    color: white !important;
+}
+
+.navbar-b{
+    .nav-link{
+        color: white;
+        :hover{
+            color: white;
+        }
+    }
+}

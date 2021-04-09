@@ -1,0 +1,286 @@
+@media only screen and (max-width: 500px) {
+  .logreg{
+    .form{
+      margin-top: 20% !important;
+      width: 90% !important;
+    } 
+  }   
+}
+.logreg{
+    box-sizing: border-box;
+    font-family: arial;
+    display: flex;
+    justify-content: center; 
+    .form{
+      margin-top: 10%;
+      width: 30%;
+      .form-group {   
+        display: inline-block;
+        // position: relative;
+        // margin: 0 auto;
+        .glogin{
+          margin-left: 30%;
+        }
+        border-radius: 15px;
+        border: 3px solid #f1f1f1;
+        box-shadow: 0 3px 11px rgba(0,0,0,0.5);
+        p{
+          text-align: center;
+          margin-bottom: 0;
+        }
+      }
+    }   
+  }
+  .fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  // .container {
+  //   margin: 0 auto;
+  // }
+  // .form {
+  //   margin-top: 10%;
+  //   // margin-left: 10%;
+  //   display: flex;
+  //   justify-content: center;
+  //   width: 40%;
+  // }
+  
+  .input {
+  // width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  // &.hn{
+  //   display: inline;
+  // }
+  // &.fn{
+  //   margin-right: 10%;
+  // }
+  }
+  
+  .button {
+  background-color: #343a40;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  }
+  
+  .button:hover {
+  opacity: 0.8;
+  }
+  
+  // .form__u{
+  //   display: inline-block;
+  //   position: relative;
+  //   top: 40vh;
+  //   left: 50vw;
+  //   transform: translate(-50%,-50%);
+  //   height: 250px;
+  //   width: 600px;
+  //   box-shadow: 0 3px 11px rgba(0,0,0,0.5);
+    
+  //   .shape1,.shape2{
+  //     display: inline-block;
+  //     position: absolute;
+  //     background-color: rgba(213,45,34,0.7);
+  //     width: 200px;
+  //     height: 200px;
+  //     top: 10%;
+  //     left: 40%;
+  //   clip-path: polygon(49% 45%, 98% 7%, 95% 81%, 16% 98%, 0 23%);
+  //   }
+    
+  //   .shape2{
+  //     transform: rotate(30deg);
+  //     background-color: rgba(34,5,234,0.7);
+  //     clip-path: polygon(25% 0%, 82% 6%, 98% 60%, 3% 94%);
+  //     left: 25%;
+  //     top: 10%;
+  //   }
+  //   .glogin {
+  //     position: absolute;
+  //     left: 20%;
+  //     top: 20px;
+  //   }
+  // }
+  
+  // #cta{
+  //   display: inline-block;
+  //   position: absolute;
+  //   z-index: 10;
+  //   background-color: #646464;
+  //   height: 400px;
+  //   width: 250px;
+  //   top: -30%;
+  //   left: 300px;
+  //   transition: left 0.3s ease-in;
+  //   padding: 40px;
+   
+  //   .cta__heading {
+  //     position: absolute;
+  //     top: 20%;
+  //     color: white;
+  //   }
+  //    .cta__text{
+  //     position: absolute;
+  //     color: white;
+  //     font-size: 12px;
+  //     top: 45%;
+  //   }
+  // }
+  // #cta.log{
+  //   left: 300px;
+  // }
+  // #cta.reg{
+  //   left: 0px;
+  // }
+  
+  // .login__form {
+  //   position: absolute;;
+  //   display: inline-block;
+  //   width: 50%;
+  //   height: 100%;
+   
+  //   &.register{
+  //     transform: translateX(100%);
+  //   } 
+  // }
+  
+  // .container__d {
+  //   display: inline-block;
+  //   position: relative;
+  //   height: 120px;
+  //   padding-top: 10px;
+  //   left: 50%;
+  //   width: 90%;
+  //   transform: translate(-50%,60%);
+      
+  //   &.cont__login{
+  //     padding-top: 10px
+  //   }
+
+  //   &.cont__register{
+  //     top: -10px;
+  //   }
+  
+  //     .input {
+  //     position: absolute;
+  //     left: 50%;
+  //     transform:translateX(-50%);
+  //     border: none;
+  //     height: 25px;
+  //     box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  //     padding: 4px 10px;
+        
+  //       // &:active{
+          
+  //       // }
+        
+  //       &.password{
+  //         transform: translate(-50%,130%);
+          
+  //         &.pwtwo{
+  //           transform: translate(-50%, 260%)
+  //         }
+  //       }
+  //     }
+  //   .btn{
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     display: inline-block;
+  //     border: none;
+  //     margin: 0;
+  //     text-decoration: none;
+  //     padding: 3px 10px;
+  //     border-radius: 2px 7px;
+  //     border: 1px solid rgba(100,100,100,0.7);
+  //     background-color: white;
+  //     transition: all 0.4s ease;
+  //     cursor: pointer;
+      
+  //     &:focus{ 
+  //       outline:none;
+  //     }
+      
+  //     &.btn__login{
+  //       transform: translate(-50%, 40px);
+        
+  //       &:hover{
+  //         border-radius: 0;
+  //         box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+  //         padding: 3px 15px;
+  
+  //       }
+        
+  //       &:active{
+  //         box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  //       }
+  //     }
+  
+      
+  //     &.btn__register{
+  //       transform: translate(-50%, 60px);
+  //       margin-top: 18px;
+  //          &:hover{
+  //         border-radius: 0;
+  //         box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+  //         padding: 3px 15px;
+  
+  //       }
+        
+  //       &:active{
+  //         box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  //       }
+  //     }
+  //   }
+  // }  
+  
+  // .cta__btn{
+  //     position: absolute;
+  //     display: inline-block;
+  //     border: none;
+  //     margin: 20px 0;
+  //     text-decoration: none;
+  //     padding: 3px 10px;
+  //     border-radius: 4px 15px;
+  //     border: 1px solid white;
+  //     background-color: transparent;
+  //     color: white;
+  //     transition: all 0.4s ease;
+  //     cursor: pointer;
+  //     left: 50%;
+  //     top: 60%;
+  //     transform: translateX(-50%);
+  //     width: 80%;
+    
+  //   &:focus{
+  //     outline: none;
+  //   }
+    
+  //   &:hover{
+  //         border-radius: 0;
+  //         box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+  //         padding: 3px 15px;
+  
+  //       }
+        
+  //       &:active{
+  //         box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  //       }
+  // }
+  
+  // .cta__btn:hover{
+  //   background-color: rgb(50,50,50);
+  //   border-radius: 0;
+  // }  
