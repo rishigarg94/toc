@@ -1,12 +1,33 @@
-import React from 'react';
+import React from 'react'
 
 const Product = (props) => {
-    console.log(props);
+    const url = `/dashboard/pharmacy/${props.medicineID}`
+    if (props.medicine) {
+        product =
+            <div>
+                <NavLink to={url}>
+                    <div className="product_box">
+                        <div className="product_img-box">
+                            <img
+                                src={props.medicineImageURL}
+                                alt={props.medicine}
+                            />
+                        </div>
+                        <div className="product_detail-box">
+                            <span>
+                                {props.medicinePrice}
+                            </span>
+                            <p>
+                                {props.medicine}
+                            </p>
+                        </div>
+                    </div>
+                </NavLink>
+            </div>
+    }
     return (
-        <div>
-            Product with id {props.match.params.id} and price ₹{props.location.search.slice(1)}
-        </div>
-    );
-};
+        { product }
+    )
+}
 
-export default Product;
+export default Product

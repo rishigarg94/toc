@@ -4,7 +4,13 @@ const { v1: uuidv1 } = require("uuid");
 
 var userSchema = new mongoose.Schema(
     {
-        name: {
+        fname: {
+            type: String,
+            required: true,
+            maxlength: 32,
+            trim: true,
+        },
+        lname: {
             type: String,
             required: true,
             maxlength: 32,
@@ -24,6 +30,10 @@ var userSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        isGoogleSignedIn: {
+            type: Boolean,
+            default: false
+        }
     },
     { timestamps: true }
 );

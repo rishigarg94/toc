@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
+import RequestPremium from './RequestPremium.js';
 import Pharmacy from './Pharmacy.js';
-import Product from './Product.js';
+import ProductPage from './ProductPage.js';
 import '../styles/blockchain/index.css';
 
 const Dashboard = () => (
@@ -23,8 +24,9 @@ const Dashboard = () => (
                         <div id="dropdown-patient" className="panel-collapse collapse">
                             <div className="panel-body">
                                 <ul className="nav navbar-nav">
-                                    <li><a href='/blockchain/details'>Details</a></li>
-                                    <li><a href='/blockchain/payments'>Payments</a></li>
+                                    <li><a href='/dashboard/patient/details'>Details</a></li>
+                                    <li><a href='/dashboard/patient/payments'>Payments</a></li>
+                                    <li><NavLink to='/dashboard/patient/request'>Request to become Premium User</NavLink></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,17 +46,18 @@ const Dashboard = () => (
                         </NavLink>
                     </li>
                     <li className="panel panel-default" id="dropdown-1">
-                        <a href='/blockchain'>
+                        <NavLink to='/blockchain'>
                             <i className="fa fa-hospital"></i>Blockchain
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </div>
             <div className="content-container">
                 <div className="container-fluid">
                     <Switch>
-                        <Route path='/dashboard/pharmacy/:id' component={Product} />
+                        <Route path='/dashboard/pharmacy/:id' component={ProductPage} />
                         <Route path='/dashboard/pharmacy' component={Pharmacy} exact />
+                        <Route path='/dashboard/patient/request' component={RequestPremium} />
                         <Route>
                             <div className="jumbotron">
                                 <h1>Navbar example</h1>
