@@ -1,10 +1,12 @@
 const express = require("express");
-const { signout, signup, signin } = require("../middleware/auth");
+const { signout, signinNormal, signinGoogle, signupNormal, signupGoogle } = require("../middleware/auth");
 const router = express.Router();
 
 
-router.post('/signup', signup)
-router.post('/signin', signin)
+router.post('/signupNormal', signupNormal)
+router.post('/signupGoogle', signupGoogle)
+router.post('/signinNormal', signinNormal)
+router.post('/signinGoogle', signinGoogle)
 router.post("/signout", signout);
 
 module.exports = router
