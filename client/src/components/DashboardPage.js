@@ -11,6 +11,7 @@ import { SpeechProvider, useSpeechContext } from '@speechly/react-client'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+
 const Dashboard = () => {
     const history = useHistory()
     const { toggleRecording, speechState, segment } = useSpeechContext()
