@@ -3,7 +3,7 @@ import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import RequestPremium from './RequestPremium.js';
 import Pharmacy from './Pharmacy.js';
-import Product from './Product.js';
+import ProductPage from './ProductPage.js';
 import '../styles/blockchain/index.css';
 
 const Dashboard = () => (
@@ -55,7 +55,7 @@ const Dashboard = () => (
             <div className="content-container">
                 <div className="container-fluid">
                     <Switch>
-                        <Route path='/dashboard/pharmacy/:id' component={Product} />
+                        <Route path='/dashboard/pharmacy/:id' component={ProductPage} />
                         <Route path='/dashboard/pharmacy' component={Pharmacy} exact />
                         <Route path='/dashboard/patient/request' component={RequestPremium} />
                         <Route>
