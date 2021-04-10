@@ -20,7 +20,15 @@ const Pharmacy = () => {
         if (segment) {
             if (segment.intent.intent === 'search_medicine') {
                 segment.entities.forEach(e => {
-
+                    setMedicines1(prev => prev.filter(item => item.name === e.value || item.tags.includes(e.value)))
+                    // setMedicines1(prev => prev.filter(item => item.tags.includes(e.value)))
+                    // e.type
+                })
+                // if()
+            }
+            else if (segment.intent.intent === 'reset') {
+                segment.entities.forEach(e => {
+                    if (e.value = 'reset_voice') setMedicines1(medicines)
                 })
             }
         }
@@ -41,7 +49,7 @@ const Pharmacy = () => {
                     <div className="flex-container wrap product_container">
                         {/* {product} */}
                         {
-                            medicines.map(medicine => (
+                            medicines1.map(medicine => (
 
                                 <NavLink to='/dashboard/pharmacy/01?120' key={medicine._id}>
                                     <div className="product_box my-5">

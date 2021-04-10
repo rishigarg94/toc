@@ -28,6 +28,13 @@ const Dashboard = () => {
         setEmail(JSON.parse(localStorage.getItem('user'))?.email || '')
     }, [fname])
 
+
+    useEffect(() => {
+        if (segment) {
+            if (segment.isFinal) segment.words = []
+        }
+    }, [segment])
+
     return (
         <Router>
             <div className="container-fluid">
@@ -77,6 +84,11 @@ const Dashboard = () => {
                                 </Card.Header>
                             </Card>
                         }
+                        <Card className='my-5'>
+                            <Card.Body>
+                                <p style={{ fontSize: 'x-small' }}>{segment && segment.words.map(w => w.value).join(' ')}</p>
+                            </Card.Body>
+                        </Card>
                     </Accordion>
                 </div>
 
