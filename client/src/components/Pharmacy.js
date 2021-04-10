@@ -52,7 +52,7 @@ const Pharmacy = () => {
                                         </div>
                                         <div className="product_detail-box">
                                             <span>
-                                                {medicine.price}
+                                                ₹{medicine.price}
                                             </span>
                                             <p>
                                                 {
