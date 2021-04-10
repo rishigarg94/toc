@@ -1,16 +1,38 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs')
 
 exports.signupNormal = (req, res) => {
-    const user = new User(req.body);
-    user.save((err, newUser) => {
-        if (!newUser)
-            return res.status(400).json({ error: "Email address already exists !" });
-        res.status(200).json({ message: "Signedup success !" });
-    });
+    const { fname, lname, email, password } = req.body
+    User.findOne({ email: email })
+        .then((savedUser) => {
+
+            if (savedUser) {
+                return res.status(422).json({ error: "User already exists with this email" })
+            }
+            bcrypt.hash(password, 12)
+                .then(hashedPassword => {
+                    const user = new User({
+                        password: hashedPassword,
+                        email,
+                        fname,
+                        lname,
+                    })
+                    user.save().then(user => {
+                        res.json({ message: "SignedUp success !" })
+                        res.json({ message: "SignedUp success !" })
+                    })
+                        .catch(e => {
+                            console.log(e)
+                        })
+                })
+        })
+        .catch(e => {
+            console.log(e)
+        })
 };
 exports.signupGoogle = (req, res) => {
-    const user = new User({ ...req.body, isGoogleSignedIn: true });
+    const user = new User(req.body);
     user.save((err, newUser) => {
         if (!newUser)
             return res.status(400).json({ error: "Email address already exists !" });
@@ -27,12 +49,7 @@ exports.signinGoogle = (req, res) => {
                 error: "Email or password do not match !",
             });
         }
-
-        if (!user.confirmed)
-            return res.status(400).json({
-                error: "You need to verify your email before login !",
-            });
-        if (user.isGoogleSignedIn)
+        if (!user.password)
             return res.status(401).json({ error: "Already signed in !" });
 
         if (!user.autheticate(password)) {
@@ -43,7 +60,6 @@ exports.signinGoogle = (req, res) => {
         // create jwt token
         const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
         // put token in cookie
-        res.cookie("token", jwtToken, { expire: new Date() + 9999 });
         res.json({ token: jwtToken, message: "LoggedIn Successfully !", user });
     })
 }
@@ -57,12 +73,7 @@ exports.signinNormal = (req, res) => {
                 error: "Email or password do not match !",
             });
         }
-
-        if (!user.confirmed)
-            return res.status(400).json({
-                error: "You need to verify your email before login !",
-            });
-        if (user.isGoogleSignedIn)
+        if (user.password)
             return res.status(401).json({ error: "Already signed in !" });
 
         if (!user.autheticate(password)) {
@@ -73,7 +84,6 @@ exports.signinNormal = (req, res) => {
         // create jwt token
         const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
         // put token in cookie
-        res.cookie("token", jwtToken, { expire: new Date() + 9999 });
         res.json({ token: jwtToken, message: "LoggedIn Successfully !", user });
     })
 }

@@ -18,11 +18,13 @@ mongoose.connection.on("error", (e) => {
 })
 //My routes
 const authRoutes = require("./routes/auth");
+const medicineRoutes = require('./routes/Medicine')
 // app specific
 app.use(express.json());
 
 //Adding routes to the app
 app.use("/api", authRoutes);
+app.use('/api', medicineRoutes)
 
 
 app.listen(port, () => {
