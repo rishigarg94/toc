@@ -9,6 +9,7 @@ import { Accordion, Button, Card } from 'react-bootstrap';
 import { BigTranscript, BigTranscriptContainer, ErrorPanel, PushToTalkButton, PushToTalkButtonContainer } from '@speechly/react-ui'
 import { SpeechProvider, useSpeechContext } from '@speechly/react-client'
 
+
 const Dashboard = () => {
     const { segment } = useSpeechContext()
 
