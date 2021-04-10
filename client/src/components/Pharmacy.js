@@ -43,7 +43,7 @@ const Pharmacy = () => {
                         {
                             medicines.map(medicine => (
 
-                                <NavLink to='/dashboard/pharmacy/01?120' key={medicine._id}>
+                                <NavLink to={`/dashboard/pharmacy/${medicine._id}`} key={medicine._id}>
                                     <div className="product_box my-5">
                                         <div className="product_img-box">
                                             <div className="">

@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect, useParams } from 'react'
 
 const ProductPage = (props) => {
-    console.log(props);
+    const url = `/api/medicines/${props.match.params.id}`
+    console.log(url)
+    const [medicine, setMedicine] = useState([])
+    fetch(url, {
+        method: 'post'
+    }).then(res => res.json())
+        .then(data => {
+            setMedicine(data)
+        })
+
     return (
-        <div>
-            Product with id {props.match.params.id} and price ₹{props.location.search.slice(1)}
+        <div className="product_box my-5">
+            <div className="product_img-box">
+                <div className="">
+                    <img src={medicine.image} alt="dd" align="center" width={250} height={250} />
+                </div>
+            </div>
+            <div className="product_detail-box">
+                <span>
+                    {medicine.price}
+                </span>
+                <p>
+                    {
+                        medicine.name
+                    }
+                </p>
+                <p>
+                    {medicine.desc}
+                </p>
+            </div>
         </div>
     )
 }
