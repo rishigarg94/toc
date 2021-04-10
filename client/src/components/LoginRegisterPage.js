@@ -28,6 +28,7 @@ const LoginRegisterPage = () => {
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('user', JSON.stringify(data.user))
                     history.push('/dashboard')
+                    window.location.reload()
                 }
             })
     }
