@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { toast } from 'react-toastify'
 
-export const RequestPremium = () => {
+const RequestPremium = () => {
 
     const name = useRef()
     const hash = useRef()
@@ -18,7 +19,7 @@ export const RequestPremium = () => {
             return
         }
 
-        console.log("message is ", msg);
+        // console.log("message is ", msg);
 
         toast.success('Patient Added !')
 
@@ -144,3 +145,5 @@ export const RequestPremium = () => {
         </div>
     )
 }
+
+export default RequestPremium;
