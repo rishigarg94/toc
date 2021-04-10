@@ -19,8 +19,8 @@ import AddPathlab from './Admin/AddPathlab'
 const Dashboard = () => {
 
     const [account, setAccount] = useState("")
-    const [role, setRole]=useState("")
-    
+    const [role, setRole] = useState("")
+
     // useEffect(async() => {
     //     portis.onLogin((curent_account_address) => {
     //         //const accounts =  web3.eth.getAccounts();
@@ -52,20 +52,20 @@ const Dashboard = () => {
     //     // }
     // }, [])
 
-    const connectToPortis = async() => {
-         //portis.showPortis()
+    const connectToPortis = async () => {
+        //portis.showPortis()
         let accounts = await web3.eth.getAccounts();
         setAccount(accounts[0]);
         await hack.methods.role_define().call((err, res) => {
             if (err) console.log(err)
             else {
                 setRole(res);
-                console.log("role is" ,res);
+                console.log("role is", res);
             }
         })
     }
 
-    const handleLogout = async() => {
+    const handleLogout = async () => {
         // portis.logout()
         let accounts = await web3.eth.getAccounts();
         setAccount(accounts[0])
@@ -92,8 +92,8 @@ const Dashboard = () => {
             gas: 1000000
         });
         console.log("message three is ", msg3);
-        
-        let msg4 = await hack.methods.add_path(account, 'rishi pathology', 'pathology ka address', '7081259609', 487,1).send({
+
+        let msg4 = await hack.methods.add_path(account, 'rishi pathology', 'pathology ka address', '7081259609', 487, 1).send({
             from: account,
             gas: 1000000
         });
@@ -102,36 +102,6 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Navbar
-                sticky="top"
-                collapseOnSelect
-                expand="lg"
-                variant="dark"
-                bg='dark'
-                className="style top-bottom"
-                id="navbar"
-            >
-                <Navbar.Brand href="/" className="title-nav">
-                    E-Administration
-        </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link eventKey="blogs" hresname="nav-items" href="/blogs">
-                            Home
-                        </Nav.Link>
-                        <Nav.Link eventKey="sponsors" href="/sponsors" className="nav-items">
-                            Sponsors
-                        </Nav.Link>
-                    </Nav>
-                    {
-                        account ?
-                            <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={handleLogout}>Logout</Button>
-                            :
-                            <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={connectToPortis}>Portis</Button>
-                    }
-                </Navbar.Collapse>
-            </Navbar>
             <div className="container-fluid">
                 <div class="sidebar-container">
                     <Accordion className='sidebar-navigation'>
