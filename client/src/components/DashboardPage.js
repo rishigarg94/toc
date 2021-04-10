@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import RequestPremium from './RequestPremium.js';
@@ -8,10 +8,16 @@ import '../styles/blockchain/index.css';
 import { Accordion, Button, Card } from 'react-bootstrap';
 import { BigTranscript, BigTranscriptContainer, ErrorPanel, PushToTalkButton, PushToTalkButtonContainer } from '@speechly/react-ui'
 import { SpeechProvider, useSpeechContext } from '@speechly/react-client'
+import SpeechlyApp from './SpeechlyApp'
 
 
 const Dashboard = () => {
-    const { segment } = useSpeechContext()
+    const { toggleRecording, speechState, segment } = useSpeechContext()
+
+    useEffect(() => {
+        console.log(segment)
+        // segment.intent.intent === ""
+    }, [segment])
 
     return (
         <Router>
@@ -52,11 +58,22 @@ const Dashboard = () => {
                                 </Accordion.Toggle>
                             </Card.Header>
                         </Card>
+                        {
+                            JSON.parse(localStorage.getItem('user'))?.isPremiumed &&
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                                        <i class="fa fa-star mr-3"></i> <a style={{ textDecoration: 'none', color: 'white' }} href='/blockchain'>Premium </a>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                            </Card>
+                        }
                         <Card>
                             <Card.Body>
-                                <p style={{ fontSize: 'small' }}>
+                                <div className="segment">
                                     {segment && segment.words.map(w => w.value).join(" ")}
-                                </p>
+                                </div>
+                                {/* <p style={{ fontSize: 'small' }}></p> */}
                             </Card.Body>
                         </Card>
                     </Accordion>
@@ -87,11 +104,11 @@ const Dashboard = () => {
                 <BigTranscriptContainer>
                     <BigTranscript />
                 </BigTranscriptContainer>
-
-                <PushToTalkButtonContainer>
+                <PushToTalkButtonContainer >
                     <PushToTalkButton captureKey=" " />
                     <ErrorPanel />
                 </PushToTalkButtonContainer>
+                {/* <SpeechlyApp /> */}
             </SpeechProvider>
         </Router>
     )

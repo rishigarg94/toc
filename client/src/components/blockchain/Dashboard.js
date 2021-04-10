@@ -39,7 +39,7 @@ const Dashboard = () => {
     //         //const accounts =  web3.eth.getAccounts();
     //         setAccount(acc);
     //         console.log(acc);
-            
+
     //         //   await  hack.methods.role_define().call((err, res) => {
     //         //         if (err) console.log(err)
     //         //         else {
@@ -54,7 +54,7 @@ const Dashboard = () => {
     //     // }
     // }, [])
 
-    const connectToPortis = async() => {
+    const connectToPortis = async () => {
         // portis.showPortis()
         let accounts = await web3.eth.getAccounts();
         setAccount(accounts[0]);
@@ -102,7 +102,7 @@ const Dashboard = () => {
     //         gas: 1000000
     //     });
     //     console.log("message three is ", msg3);
-        
+
     //     let msg4 = await hack.methods.add_path(account, 'rishi pathology', 'pathology ka address', '7081259609', 487,1).send({
     //         from: account,
     //         gas: 1000000
@@ -111,7 +111,7 @@ const Dashboard = () => {
     // }
 
     return (
-        <div> 
+        <div>
             <Navbar
                 sticky="top"
                 collapseOnSelect
@@ -127,12 +127,9 @@ const Dashboard = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link eventKey="blogs" hresname="nav-items" href="/blogs">
-                            Home
-                            </Nav.Link>
-                        <Nav.Link eventKey="sponsors" href="/sponsors" className="nav-items">
-                            Sponsors
-                            </Nav.Link>
+                        <a hresname="nav-items" href="/dashboard" style={{ textDecoration: 'none', color: 'white' }}>
+                            User Dashboard
+                        </a>
                     </Nav>
                     {
                         account ?

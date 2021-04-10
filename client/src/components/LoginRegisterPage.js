@@ -3,9 +3,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from 'react-google-login';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom'
 
 const LoginRegisterPage = () => {
     const [toggle, setToggle] = useState(true);
+    const history = useHistory()
 
     const handleLoginSuccess = (res) => {
         fetch('/api/signinGoogle', {
@@ -24,8 +26,8 @@ const LoginRegisterPage = () => {
                 else {
                     toast.success(data.message)
                     localStorage.setItem('token', data.token)
-                    // route to dashboard
-                    // page reload
+                    localStorage.setItem('user', JSON.stringify(data.user))
+                    history.push('/dashboard')
                 }
             })
     }
@@ -143,7 +145,8 @@ const LoginRegisterPage = () => {
                     else {
                         toast.success(data.message)
                         localStorage.setItem('token', data.token)
-                        // route to dashboard
+                        localStorage.setItem('user', JSON.stringify(data.user))
+                        history.push('/dashboard')
                     }
                 })
         }

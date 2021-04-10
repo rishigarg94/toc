@@ -24,6 +24,10 @@ var userSchema = new mongoose.Schema(
             type: String,
             default: null,
         },
+        isPremiumed: {
+            type: Boolean,
+            default: false
+        }
     },
     { timestamps: true }
 );

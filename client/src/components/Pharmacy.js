@@ -4,29 +4,16 @@ import { NavLink } from 'react-router-dom'
 // import Product from './Product'
 
 const Pharmacy = () => {
-    // const url = '/api/medicine'
-    // const [medicines, setMedicines] = useState(null)
 
-    // useEffect(() => {
-    //     axios.get(url)
-    //         .then(res => {
-    //             setMedicines(res.data)
-    //         })
-    // }, [])
-    // if (medicines) {
-    //     product =
-    //     <div>
-    //         medicines.map((medicine) => (
-    //                         <Product
-    //                             key={medicine._id}
-    //                             medicineID={medicine._id}
-    //                             medicine={medicine._name}
-    //                             medicinePrice={medicine._price}
-    //                             medicineImageURL={medicine._img}
-    //                         />
-    //                     ))
-    //     </div>
-    // }
+    const [medicines, setMedicines] = useState([])
+
+    useEffect(() => {
+        fetch('/api/medicines').then(res => res.json())
+            .then(data => {
+                setMedicines(data)
+            })
+    }, [])
+
     return (
         <div>
             <section className="products_section">
@@ -41,186 +28,29 @@ const Pharmacy = () => {
                 <div className="container layout_padding">
                     <div className="flex-container wrap product_container">
                         {/* {product} */}
-                        <NavLink to='/dashboard/pharmacy/01?120'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹120
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/02?110'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹110
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/03?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/04?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/05?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/06?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/07?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/08?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/09?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/10?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/11?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
-                        <NavLink to='/dashboard/pharmacy/12?150'>
-                            <div className="product_box">
-                                <div className="product_img-box">
-                                    <div className="box-img-file"></div>
-                                </div>
-                                <div className="product_detail-box">
-                                    <span>
-                                        ₹150
-                                </span>
-                                    <p>
-                                        Passage of Lorem Ipsum, you
-                                </p>
-                                </div>
-                            </div>
-                        </NavLink>
+                        {
+                            medicines.map(medicine => (
+
+                                <NavLink to='/dashboard/pharmacy/01?120' key={medicine._id}>
+                                    <div className="product_box my-5">
+                                        <div className="product_img-box">
+                                            <div className="">
+                                                <img src={medicine.image} alt="dd" width={250} height={250} />
+                                            </div>
+                                        </div>
+                                        <div className="product_detail-box">
+                                            <span>
+                                                {medicine.price}
+                                            </span>
+                                            <p>
+                                                {
+                                                    medicine.name
+                                                }
+                                            </p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            ))}
                     </div>
                 </div>
             </section>
