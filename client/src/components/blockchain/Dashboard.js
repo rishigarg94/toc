@@ -22,29 +22,31 @@ const Dashboard = () => {
     const [role, setRole] = useState("")
 
     // useEffect(async() => {
-    //     portis.onLogin((curent_account_address) => {
+    //     portis.onLogin(async(curent_account_address) => {
     //         //const accounts =  web3.eth.getAccounts();
     //         setAccount(curent_account_address);
     //         console.log(curent_account_address);
-    //             await hack.methods.role_define().call((err, res) => {
-    //                 if (err) console.log(err)
-    //                 else {
-    //                     setRole(res.role_id);
-    //                     console.log("role is" ,res);
-    //                 }
-    //             })
+
+    //             // await hack.methods.role_define().call((err, res) => {
+    //             //     if (err) console.log(err)
+    //             //     else {
+    //             //         setRole(res.role_id);
+    //             //         console.log("role is" ,res);
+    //             //     }
+    //             // })
     //     });
-    //     portis.onActiveWalletChanged((acc) => {
+    //     portis.onActiveWalletChanged(async(acc) => {
     //         //const accounts =  web3.eth.getAccounts();
     //         setAccount(acc);
     //         console.log(acc);
-    //           await  hack.methods.role_define().call((err, res) => {
-    //                 if (err) console.log(err)
-    //                 else {
-    //                     setRole(res.role_id);
-    //                     console.log("role is" ,res);
-    //                 }
-    //             })
+            
+    //         //   await  hack.methods.role_define().call((err, res) => {
+    //         //         if (err) console.log(err)
+    //         //         else {
+    //         //             setRole(res.role_id);
+    //         //             console.log("role is" ,res);
+    //         //         }
+    //         //     })
     //     });
 
     //     // return () => {
@@ -52,56 +54,64 @@ const Dashboard = () => {
     //     // }
     // }, [])
 
-    const connectToPortis = async () => {
-        //portis.showPortis()
+    const connectToPortis = async() => {
+        // portis.showPortis()
         let accounts = await web3.eth.getAccounts();
         setAccount(accounts[0]);
-        await hack.methods.role_define().call((err, res) => {
-            if (err) console.log(err)
-            else {
-                setRole(res);
-                console.log("role is", res);
-            }
-        })
+        // await hack.methods.role_define().call((err, res) => {
+        //     if (err) console.log(err)
+        //     else {
+        //         setRole(res);
+        //         console.log("role is" ,res);
+        //     }
+        // })
     }
 
     const handleLogout = async () => {
         // portis.logout()
         let accounts = await web3.eth.getAccounts();
-        setAccount(accounts[0])
+        setAccount(accounts[4])
+        // console.log("recent account is ",account);
+
+        // await hack.methods.get_msg_sender().call((err,res) =>{
+        //     if(err) console.log("msg sender error",err);
+        //     else{
+        //         console.log("msg sender result is ",res);
+        //     }
+        // })
         //fillfun()
     }
 
-    const fillfun = async () => {
-        let msg = await hack.methods.add_patient(account, 'rishigarg', '090401', 'none', 'b+', 98, '9999', '7777', 0, 1).send({
-            from: account,
-            gas: 1000000
-        });
+    // const fillfun = async () => {
+    //     let msg = await hack.methods.add_patient(account, 'rishigarg', '090401', 'none', 'b+', 98, '9999', '7777', 0, 1).send({
+    //         from: account,
+    //         gas: 1000000
+    //     });
 
-        console.log("message is ", msg);
+    //     console.log("message is ", msg);
 
-        let msg2 = await hack.methods.add_doctor(account, 'rishi doctor', 'gynecologist', '7081259609', 'hospital', 988, 1).send({
-            from: account,
-            gas: 1000000
-        });
-        console.log("message two is ", msg2);
+    //     let msg2 = await hack.methods.add_doctor(account, 'rishi doctor', 'gynecologist', '7081259609', 'hospital', 988, 1).send({
+    //         from: account,
+    //         gas: 1000000
+    //     });
+    //     console.log("message two is ", msg2);
 
 
-        let msg3 = await hack.methods.add_pharmacy(account, 'rishi pharma', 'pharmacy ka address', '7081259609', 976, 1).send({
-            from: account,
-            gas: 1000000
-        });
-        console.log("message three is ", msg3);
-
-        let msg4 = await hack.methods.add_path(account, 'rishi pathology', 'pathology ka address', '7081259609', 487, 1).send({
-            from: account,
-            gas: 1000000
-        });
-        console.log("message four is ", msg4);
-    }
+    //     let msg3 = await hack.methods.add_pharmacy(account, 'rishi pharma', 'pharmacy ka address', '7081259609', 976, 1).send({
+    //         from: account,
+    //         gas: 1000000
+    //     });
+    //     console.log("message three is ", msg3);
+        
+    //     let msg4 = await hack.methods.add_path(account, 'rishi pathology', 'pathology ka address', '7081259609', 487,1).send({
+    //         from: account,
+    //         gas: 1000000
+    //     });
+    //     console.log("message four is ", msg4);
+    // }
 
     return (
-        <div>
+        <div> 
             <Navbar
                 sticky="top"
                 collapseOnSelect

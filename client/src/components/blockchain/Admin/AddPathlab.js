@@ -5,7 +5,7 @@ export default function AddPathlab({ account }) {
 
     const name = useRef()
     const hash = useRef()
-    const cno = useRef()
+    const cno = useRef() 
     const addr = useRef()
     const balance = useRef()
 
@@ -17,7 +17,7 @@ export default function AddPathlab({ account }) {
         }
 
         //api
-        let msg4 = await hack.methods.add_path(hash.current.value, name.current.value, addr.current.value, cno.current.value, balance.current.value,1).send({
+        let msg4 = await hack.methods.add_path(hash.current.value, name.current.value, addr.current.value, cno.current.value, balance.current.value,1,account).send({
             from: account,
             gas: 1000000
         });

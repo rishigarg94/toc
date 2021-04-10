@@ -4,7 +4,7 @@ import { portis, web3, hack } from '../Config'
 
 export default function AddPharma({ account }) {
 
-    const name = useRef()
+    const name = useRef() 
     const hash = useRef()
     const cno = useRef()
     const addr = useRef()
@@ -19,7 +19,7 @@ export default function AddPharma({ account }) {
 
         //api
 
-        let msg3 = await hack.methods.add_pharmacy(hash.current.value, name.current.value, addr.current.value, cno.current.value, balance.current.value, 1).send({
+        let msg3 = await hack.methods.add_pharmacy(hash.current.value, name.current.value, addr.current.value, cno.current.value, balance.current.value, 1,account).send({
             from: account,
             gas: 1000000
         });

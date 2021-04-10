@@ -14,14 +14,14 @@ export default function Payments({ account }) {
 
     
     const send_payment = async (reciever_hash,amount,sender_hash) => {
-        let msg = await hack.methods.payment(reciever_hash,amount).send({
+        let msg = await hack.methods.payment(reciever_hash,amount,sender_hash).send({
             from: sender_hash,
             gas: 1000000
         });
 
         console.log("message is ", msg.code);
 
-        let msg_code=await hack.methods.patient_last_transaction().call((err,res) =>{
+        let msg_code=await hack.methods.patient_last_transaction(sender_hash).call((err,res) =>{
             if (err) console.log("error in doxcot" ,err)
             else {
                 console.log("result in doctor" ,res);

@@ -13,26 +13,25 @@ export default function Details({ account }) {
         dob: ''
     })
 
-    const getMyDetails = async () => {
-         await hack.methods.show_self_deatils(account).call((err, res) => {
-            if (err) console.log("hi error",err,"account is ",account)
+    const getMyDetails =  async() => {
+        await hack.methods.show_self_deatils(account,account).call((err, res) => {
+           if (err) console.log("hi error",err,"account is ",account)
 
-            else {
-                setData({
-                    name: res.patient_name,
-                    dob: res.patient_dob,
-                    contactNo: res.patient_contact_number,
-                    emergencyContactNo: res.patient_emergency_contact_number,
-                    previousAllergy: res.patient_previous_allergies,
-                    bgrp: res.patient_blood_group,
-                    balance: res.patient_balance
-                })
-            }
-        })
-    }
-
+           else {
+               setData({
+                   name: res.patient_name,
+                   dob: res.patient_dob,
+                   contactNo: res.patient_contact_number,
+                   emergencyContactNo: res.patient_emergency_contact_number,
+                   previousAllergy: res.patient_previous_allergies,
+                   bgrp: res.patient_blood_group,
+                   balance: res.patient_balance
+               })
+           }
+       })
+   }
     return (
-        <div>
+        <div> 
             <div class="input-group input-group-lg col-10 mx-auto mt-5" style={{ marginBottom: '4rem' }}>
                 <div class="input-group-prepend">
                 </div>

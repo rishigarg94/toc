@@ -129,9 +129,11 @@ contract hack{
     string memory  contact_number,
     string memory  emergency_contact_number,
     uint description_length,
-    uint patient_flag
+    uint patient_flag,
+    address owner_hash
     
-    ) public only_owner{
+    ) public {
+        if(owner==owner_hash){
         patient_records[patient_hash]._patient_hash=patient_hash;
         patient_records[patient_hash]._patient_name=stringToBytes32(name);
         patient_records[patient_hash]._patient_dob=stringToBytes32(dob);
@@ -143,7 +145,7 @@ contract hack{
         patient_records[patient_hash]._patient_emergency_contact_number=stringToBytes32(emergency_contact_number);
         patient_records[patient_hash]._patient_prescription_length=description_length;
         patient_records[patient_hash]._patient_flag=patient_flag;
-
+        }
         
     }
     
@@ -154,8 +156,9 @@ contract hack{
         string memory phone_number,
         string memory  address_of_doctor,
         uint balance,
-        uint flag) public only_owner{
-        
+        uint flag,
+        address owner_hash) public {
+        if(owner==owner_hash){
         doctor_record[_doctor_hash]=
         doctor(
             _doctor_hash,
@@ -165,7 +168,7 @@ contract hack{
             stringToBytes32(address_of_doctor),
             balance,
             flag);
-        
+        }
         
     }
     
@@ -175,15 +178,16 @@ contract hack{
         string memory temp_address,
         string memory phone_number,
         uint balance,
-        uint flag) public only_owner{
-        
+        uint flag,
+        address owner_hash) public {
+        if(owner==owner_hash){
         pharmacy_record[hash]._pharmacy_hash=hash;
         pharmacy_record[hash]._pharmacy_name=stringToBytes32(name);
         pharmacy_record[hash]._pharmacy_address=stringToBytes32(temp_address);
         pharmacy_record[hash]._pharmacy_phone_number=stringToBytes32(phone_number);
         pharmacy_record[hash]._pharmacy_balance=balance;
         pharmacy_record[hash]._pharmacy_flag=flag;
-            
+        }
         }
         
         
@@ -193,36 +197,37 @@ contract hack{
         string memory temp_address,
         string memory phone_number,
         uint balance,
-        uint flag) public only_owner{
-        
+        uint flag,
+        address owner_hash) public {
+        if(owner==owner_hash){
         pathlab_record[hash]._path_hash=hash;
         pathlab_record[hash]._path_name=stringToBytes32(name);
         pathlab_record[hash]._path_address=stringToBytes32(temp_address);
         pathlab_record[hash]._path_phone_number=stringToBytes32(phone_number);
         pathlab_record[hash]._path_balance=balance;
         pathlab_record[hash]._path_flag=flag;
-
+        }
         }
 
 
 
-    function role_define() public view returns(
+    function role_define(address owner_hash) public view returns(
         uint role_id
     )
     {   role_id=0;
-        if(patient_records[msg.sender]._patient_flag ==1){
+        if(patient_records[owner_hash]._patient_flag ==1){
             role_id=1;
         }
-        else if (doctor_record[msg.sender]._doctor_flag ==1){
+        else if (doctor_record[owner_hash]._doctor_flag ==1){
             role_id=2;
         }
-        else if(pharmacy_record[msg.sender]._pharmacy_flag ==1){
+        else if(pharmacy_record[owner_hash]._pharmacy_flag ==1){
             role_id=3;
         }
-        else if(pathlab_record[msg.sender]._path_flag ==1){
+        else if(pathlab_record[owner_hash]._path_flag ==1){
             role_id=4;
         }
-        else if(msg.sender ==owner){
+        else if(owner_hash ==owner){
             role_id=5;
         }
         else{
@@ -230,8 +235,12 @@ contract hack{
         }
         
     }
+
+    function get_msg_sender(address owner_hash) public view returns(address sender){
+        sender=owner_hash;
+    }
     
-    function  show_self_deatils (address _patient_hash)  public view only_self 
+    function  show_self_deatils (address _patient_hash,address owner_hash)  public view  
     returns (
         address patient_hash,
         string memory patient_name,
@@ -245,6 +254,7 @@ contract hack{
         
         
         ) {
+            if(patient_records[owner_hash]._patient_flag==1){
             patient storage temp = patient_records[_patient_hash];
             
                 patient_hash = temp._patient_hash;
@@ -256,9 +266,10 @@ contract hack{
                 patient_emergency_contact_number = bytes32ToString(temp._patient_emergency_contact_number);
                 patient_balance = temp._patient_balance;
                 patient_prescription_length = temp._patient_prescription_length;
+            }
     }
     
-    function search_doctor(address _doctor_hash) public view only_self
+    function search_doctor(address _doctor_hash,address owner_hash) public view 
     returns (
         address doctor_hash,
         string memory doctor_name,
@@ -266,7 +277,7 @@ contract hack{
         string memory doctor_phone_number,
         string memory doctor_speciality
         
-        ){
+        ){  if(patient_records[owner_hash]._patient_flag==1){
             doctor memory temp =doctor_record[_doctor_hash];
             
                 doctor_hash=temp._doctor_hash;
@@ -274,13 +285,15 @@ contract hack{
                 doctor_address=bytes32ToString(temp._doctor_address);
                 doctor_phone_number=bytes32ToString(temp._doctor_phone_number);
                 doctor_speciality=bytes32ToString(temp._doctor_speciality);
-            
+        }
     
     }
     
-    function payment(address reciever_hash,uint amount)  public  only_self returns (uint code) {
-        code=0;
-        address sender_hash=msg.sender;
+    function payment(address reciever_hash,uint amount, address owner_hash)  public   returns (uint code) {
+        
+        if(patient_records[owner_hash]._patient_flag==1){
+            code=0;
+        address sender_hash=owner_hash;
         uint available_balance=patient_records[sender_hash]._patient_balance;
         if(available_balance >= amount){
             
@@ -318,38 +331,43 @@ contract hack{
                 patient_records[sender_hash].last_transaction=2;
                 
             }
-         
+        }
         
     }
 
 
-    function patient_last_transaction() public view only_self returns(uint code){
-        code=patient_records[msg.sender].last_transaction;
+    function patient_last_transaction(address owner_hash) public view  returns(uint code){
+        code=patient_records[owner_hash].last_transaction;
         
     }
     
-    function get_total_number_of_prescriptions_by_pharma(address patient_hash) public view only_pharmacy returns(uint total_count){
-        total_count=0;
-        if(patient_records[patient_hash]._patient_flag==1){
-            total_count=patient_records[patient_hash]._patient_prescription_length;
-        }
-        else{
-            total_count=0;
-        }
-    }
-
-    function get_total_number_of_prescriptions_by_pathalogy(address patient_hash) public view only_pathology returns(uint total_count){
-        total_count=0;
-        if(patient_records[patient_hash]._patient_flag==1){
-            total_count=patient_records[patient_hash]._patient_prescription_length;
-        }
-        else{
-            total_count=0;
-        }
-    }
-
-    function give_prescription(address _doctor_hash,address _patient_hash,string memory  _details_of_prescription) public only_doctor{
+    function get_total_number_of_prescriptions_by_pharma(address patient_hash,address owner_hash) public view  returns(uint total_count){
         
+        total_count=0;
+        if(pharmacy_record[owner_hash]._pharmacy_flag==1){
+        if(patient_records[patient_hash]._patient_flag==1){
+            total_count=patient_records[patient_hash]._patient_prescription_length;
+        }
+        else{
+            total_count=0;
+        }
+        }
+    }
+
+    function get_total_number_of_prescriptions_by_pathalogy(address patient_hash,address owner_hash) public view  returns(uint total_count){
+        total_count=0;
+        if(pathlab_record[owner_hash]._path_flag==1){
+        if(patient_records[patient_hash]._patient_flag==1){
+            total_count=patient_records[patient_hash]._patient_prescription_length;
+        }
+        else{
+            total_count=0;
+        }
+        }
+    }
+
+    function give_prescription(address _doctor_hash,address _patient_hash,string memory  _details_of_prescription) public {
+    
         string memory  _current_patient=bytes32ToString(patient_records[_patient_hash]._patient_name);
         string memory  _current_doctor =bytes32ToString( doctor_record[_doctor_hash]._doctor_name);
         uint256 _current_time=block.timestamp;
@@ -371,7 +389,7 @@ contract hack{
         
     }
     
-    function view_patient_details(address _patient_hash) public view only_doctor
+    function view_patient_details(address _patient_hash,address owner_hash) public view 
     returns (
         address patient_hash,
         string memory patient_name,
@@ -383,6 +401,7 @@ contract hack{
         uint patient_prescription_length
         
         ) {
+            if(doctor_record[owner_hash]._doctor_flag==1){
             patient storage temp = patient_records[_patient_hash];
             
                  
@@ -395,18 +414,19 @@ contract hack{
                 patient_emergency_contact_number=bytes32ToString(temp._patient_emergency_contact_number);
                 patient_prescription_length=temp._patient_prescription_length;
                 
-                
+            }
         
     }
     
     
-    function view_prescription_by_doctor(address _patient_hash,uint number) public view only_doctor
+    function view_prescription_by_doctor(address _patient_hash,uint number,address owner_hash) public view 
     returns(
     string memory doctor_prescribed ,
     string memory patient_prescribed,
     string memory description,
     uint256 time_prescribed
     ){
+        if(doctor_record[owner_hash]._doctor_flag==1){
         uint _current_length_of_prescription = patient_records[_patient_hash]._patient_prescription_length;
         bytes32 _visible_prescription_hash;
         if(_current_length_of_prescription>=number)
@@ -422,16 +442,17 @@ contract hack{
         time_prescribed = patient_records[_patient_hash]._patient_prescription_record[_visible_prescription_hash]._timestamp;
         
         
-        
+        }
     }
     
-    function view_prescription_by_pharma (address _patient_hash,uint number) public view only_pharmacy
+    function view_prescription_by_pharma (address _patient_hash,uint number,address owner_hash) public view 
     returns(
     string memory doctor_prescribed ,
     string memory patient_prescribed,
     string memory description,
     uint256 time_prescribed
     ){
+        if(pharmacy_record[owner_hash]._pharmacy_flag==1){
         uint _current_length_of_prescription = patient_records[_patient_hash]._patient_prescription_length;
         bytes32 _visible_prescription_hash;
         if(_current_length_of_prescription>=number)
@@ -448,16 +469,17 @@ contract hack{
           time_prescribed = patient_records[_patient_hash]._patient_prescription_record[_visible_prescription_hash]._timestamp;
         
         
-        
+        }
     }
 
-    function view_prescription_by_pathlab(address _patient_hash,uint number) public view only_pathology
+    function view_prescription_by_pathlab(address _patient_hash,uint number,address owner_hash) public view 
     returns(
     string memory doctor_prescribed ,
     string memory patient_prescribed,
     string memory description,
     uint256 time_prescribed
     ){
+        if(pathlab_record[owner_hash]._path_flag==1){
         uint _current_length_of_prescription = patient_records[_patient_hash]._patient_prescription_length;
         bytes32 _visible_prescription_hash;
         if(_current_length_of_prescription>=number)
@@ -473,7 +495,7 @@ contract hack{
           patient_prescribed = bytes32ToString(patient_records[_patient_hash]._patient_prescription_record[_visible_prescription_hash]._patient_name);
           time_prescribed = patient_records[_patient_hash]._patient_prescription_record[_visible_prescription_hash]._timestamp;
         
-        
+        }
         
     }
     

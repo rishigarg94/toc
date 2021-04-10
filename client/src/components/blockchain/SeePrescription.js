@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { portis, web3, hack } from './Config';
 
-export default function SeePrescription() {
+export default function SeePrescription({account}) {
 
     const [data, setData] = useState({
         doctorName: '',
@@ -24,7 +24,7 @@ export default function SeePrescription() {
             setFetching(true)
             // api
 
-            hack.methods.view_prescription_by_pharma(accRef.current.value, count).call((err, res) => {
+            hack.methods.view_prescription_by_pharma(accRef.current.value, count,account).call((err, res) => {
                 if (err) console.log("error in doxcot", err)
                 else {
                     console.log("result in doctor", res);
@@ -45,7 +45,7 @@ export default function SeePrescription() {
 
         setFetching(true);
 
-        hack.methods.get_total_number_of_prescriptions_by_pharma(accRef.current.value).call((err, res) => {
+        hack.methods.get_total_number_of_prescriptions_by_pharma(accRef.current.value,account).call((err, res) => {
             if (err) {
                 console.log("total  no of prescription is error", err);
             }
@@ -55,8 +55,8 @@ export default function SeePrescription() {
             }
         })
 
-        hack.methods.view_prescription_by_pharma(accRef.current.value, count).call((err, res) => {
-            if (err) console.log("error in doxcot", err)
+        hack.methods.view_prescription_by_pharma(accRef.current.value, count,account).call((err, res) => {
+            if (err) console.log("error in doxcot", err) 
             else {
                 console.log("result in doctor", res);
                 setData({
