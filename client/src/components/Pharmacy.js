@@ -1,18 +1,30 @@
+import { useSpeechContext } from '@speechly/react-client'
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import axios from 'axios'
-// import Product from './Product'
 
 const Pharmacy = () => {
 
     const [medicines, setMedicines] = useState([])
+    const [medicines1, setMedicines1] = useState([])
+    const { segment } = useSpeechContext()
 
     useEffect(() => {
         fetch('/api/medicines').then(res => res.json())
             .then(data => {
                 setMedicines(data)
+                setMedicines1(data)
             })
     }, [])
+
+    useEffect(() => {
+        if (segment) {
+            if (segment.intent.intent === 'search_medicine') {
+                segment.entities.forEach(e => {
+
+                })
+            }
+        }
+    }, [segment])
 
     return (
         <div>

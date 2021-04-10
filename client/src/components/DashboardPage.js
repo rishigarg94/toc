@@ -7,15 +7,13 @@ import ProductPage from './ProductPage.js';
 import '../styles/blockchain/index.css';
 import { Accordion, Button, Card } from 'react-bootstrap';
 import { BigTranscript, BigTranscriptContainer, ErrorPanel, PushToTalkButton, PushToTalkButtonContainer } from '@speechly/react-ui'
-import { SpeechProvider, useSpeechContext } from '@speechly/react-client'
-import SpeechlyApp from './SpeechlyApp'
+import { useSpeechContext } from '@speechly/react-client'
 
 const Dashboard = () => {
     const { toggleRecording, speechState, segment } = useSpeechContext()
 
     useEffect(() => {
         console.log(segment)
-        // segment.intent.intent === ""
     }, [segment])
 
     return (
@@ -67,14 +65,6 @@ const Dashboard = () => {
                                 </Card.Header>
                             </Card>
                         }
-                        <Card>
-                            <Card.Body>
-                                <div className="segment">
-                                    {segment && segment.words.map(w => w.value).join(" ")}
-                                </div>
-                                {/* <p style={{ fontSize: 'small' }}></p> */}
-                            </Card.Body>
-                        </Card>
                     </Accordion>
                 </div>
 
@@ -99,16 +89,15 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <SpeechProvider appId="37bec763-28ae-4576-9d4f-8f234bfcfa61" language="en-US">
-                <BigTranscriptContainer>
-                    <BigTranscript />
-                </BigTranscriptContainer>
-                <PushToTalkButtonContainer >
-                    <PushToTalkButton captureKey=" " />
-                    <ErrorPanel />
-                </PushToTalkButtonContainer>
-                {/* <SpeechlyApp /> */}
-            </SpeechProvider>
+            <BigTranscriptContainer>
+                <BigTranscript />
+            </BigTranscriptContainer>
+            <PushToTalkButtonContainer >
+                <PushToTalkButton captureKey=" " />
+                <ErrorPanel />
+            </PushToTalkButtonContainer>
+            {/* <SpeechlyApp /> */}
+            {/* </SpeechProvider> */}
         </Router>
     )
 }
