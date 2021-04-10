@@ -22,16 +22,21 @@ const AppRouter = () => (
             draggable
             pauseOnHover
         />
-        <Route>
-            <Header />
-            <Switch>
-                <Route path="/" component={HomePage} exact />
-                <Route path='/blockchain' component={Dashboard} exact />
-                <Route path="/sign" component={LoginRegisterPage} exact />
-                <Route path="/dashboard" component={DashboardPage} exact />
-                <Route component={NotFoundPage} />
-            </Switch>
-        </Route>
+        <Switch>
+            <Route path='/blockchain' >
+                <Dashboard />
+            </Route>
+            <Route>
+                <Header />
+                <Switch>
+                    {/* <Route path='/blockchain' component={Dashboard} exact /> */}
+                    <Route path="/" component={HomePage} exact />
+                    <Route path="/sign" component={LoginRegisterPage} exact />
+                    <Route path="/dashboard" component={DashboardPage} exact />
+                    <Route component={NotFoundPage} />
+                </Switch>
+            </Route>
+        </Switch>
     </BrowserRouter>
 );
 

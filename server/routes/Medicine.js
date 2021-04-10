@@ -25,27 +25,28 @@ router.post("/medicines", (req, res) => {
     newMedicine
         .save()
         .then(savedMedicine => {
-            const { id, name, price, desc, image } = savedMedicine.transform();
+            const { id, name, price, desc, image, tags } = savedMedicine
 
             res.json({
                 id: id.toString(),
                 name,
                 price,
                 desc,
-                image
+                image,
+                tags
             });
         })
         .catch((e) => console.log(e));
 });
 
 router.put("/medicines/:id", (req, res) => {
-    medicine.findOneAndReplace({ _id: req.params.id }, req.body, null, (e, news) => {
+    medicine.findOneAndReplace({ _id: req.params.id }, req.body, null, (e, medicine) => {
         if (e) {
             return res.status(400).json({
                 error: "medicine cannot be updated !"
             })
         }
-        return res.json(news.transform())
+        return res.json(medicine)
     })
 });
 

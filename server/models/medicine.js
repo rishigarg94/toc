@@ -19,16 +19,12 @@ var medicineSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        tags: {
+            type: [String],
+            required: true
+        }
     },
     { timestamps: true }
 );
-
-medicineSchema.method("transform", function () {
-    let obj = this.toObject();
-    obj.id = obj._id;
-    delete obj._id;
-    return obj;
-});
-
 
 module.exports = mongoose.model("Medicine", medicineSchema);
