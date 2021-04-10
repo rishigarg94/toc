@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import RequestPremium from './RequestPremium.js';
@@ -7,14 +7,26 @@ import ProductPage from './ProductPage.js';
 import '../styles/blockchain/index.css';
 import { Accordion, Button, Card } from 'react-bootstrap';
 import { BigTranscript, BigTranscriptContainer, ErrorPanel, PushToTalkButton, PushToTalkButtonContainer } from '@speechly/react-ui'
-import { useSpeechContext } from '@speechly/react-client'
+import { SpeechProvider, useSpeechContext } from '@speechly/react-client'
+import { useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
+
 
 const Dashboard = () => {
+    const history = useHistory()
     const { toggleRecording, speechState, segment } = useSpeechContext()
+    const [fname, setFname] = useState(JSON.parse(localStorage.getItem('user'))?.fname || '')
+    const [lname, setLname] = useState(JSON.parse(localStorage.getItem('user'))?.lname || '')
+    const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user'))?.email || '')
 
     useEffect(() => {
         console.log(segment)
     }, [segment])
+    useEffect(() => {
+        setFname(JSON.parse(localStorage.getItem('user'))?.fname || '')
+        setLname(JSON.parse(localStorage.getItem('user'))?.lname || '')
+        setEmail(JSON.parse(localStorage.getItem('user'))?.email || '')
+    }, [fname])
 
     return (
         <Router>
@@ -29,8 +41,8 @@ const Dashboard = () => {
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body><ul class="nav navbar-nav">
-                                    {/* <li><Link to='/dashboard/patient/details'>Details</Link></li> */}
-                                    <li><Link to='/dashboard/patient/payments'>Payments</Link></li>
+                                    <li><Link to='/dashboard/patient/details'>Details</Link></li>
+                                    {/* <li><Link to='/dashboard/patient/payments'>Payments</Link></li> */}
                                     <li><Link to='/dashboard/patient/request'>Request to become Premium User</Link></li>
                                 </ul></Card.Body>
                             </Accordion.Collapse>
@@ -75,14 +87,24 @@ const Dashboard = () => {
                             <Route path='/dashboard/pharmacy/:id' component={ProductPage} exact />
                             <Route path='/dashboard/pharmacy' component={Pharmacy} exact />
                             <Route path='/dashboard/patient/request' component={RequestPremium} exact />
+                            <Route path='/dashboard/patient/details'>
+                                <div className="jumbotron">
+                                    <h1>{fname} {lname} </h1>
+                                    <p>
+                                        <h3>EMAIL: {email}</h3>
+                                    </p>
+                                    <button className="btn btn-primary" onClick={e => {
+                                        localStorage.removeItem('user')
+                                        localStorage.removeItem('token')
+                                        history.push('/')
+                                        toast.success('Logged Out successful')
+                                        window.location.reload()
+                                    }}>Logout</button>
+                                </div>
+                            </Route>
                             <Route>
                                 <div className="jumbotron">
-                                    <h1>Navbar example</h1>
-                                    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-                                    <p>To see the difference between static and fixed top navbars, just scroll.</p>
-                                    <p>
-                                        <a className="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-                                    </p>
+                                    <h1>Welcome to User Dashboard Page</h1>
                                 </div>
                             </Route>
                         </Switch>

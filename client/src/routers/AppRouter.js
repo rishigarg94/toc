@@ -31,8 +31,11 @@ const AppRouter = () => (
                 <Switch>
                     {/* <Route path='/blockchain' component={Dashboard} exact /> */}
                     <Route path="/" component={HomePage} exact />
-                    <Route path="/sign" component={LoginRegisterPage} exact />
-                    <Route path="/dashboard" component={DashboardPage} exact />
+                    {JSON.parse(localStorage.getItem('user')) || '' ?
+                        <Route path="/dashboard" component={DashboardPage} exact />
+                        :
+                        <Route path="/sign" component={LoginRegisterPage} exact />
+                    }
                     <Route component={NotFoundPage} />
                 </Switch>
             </Route>

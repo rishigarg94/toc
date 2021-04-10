@@ -19,6 +19,26 @@ const RequestPremium = () => {
             return
         }
 
+        fetch('/api/request', {
+            method: 'post',
+            headers: {
+                "Content-Type": 'application/json',
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                name: name.current.value,
+                hash: hash.current.value,
+                bgrp: bgrp.current.value,
+                dob: dob.current.dob.value,
+                cno: cno.current.value,
+
+            })
+        }).then(res => res.json())
+            .then(data => {
+
+            })
+
+
         // console.log("message is ", msg);
 
         toast.success('Patient Added !')
