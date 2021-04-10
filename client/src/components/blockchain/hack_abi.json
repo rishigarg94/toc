@@ -43,6 +43,11 @@
                     "internalType": "uint256",
                     "name": "flag",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "add_doctor",
@@ -83,6 +88,11 @@
                     "internalType": "uint256",
                     "name": "flag",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "add_path",
@@ -143,6 +153,11 @@
                     "internalType": "uint256",
                     "name": "patient_flag",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "add_patient",
@@ -183,6 +198,11 @@
                     "internalType": "uint256",
                     "name": "flag",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "add_pharmacy",
@@ -217,7 +237,33 @@
             "inputs": [
                 {
                     "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "get_msg_sender",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
                     "name": "patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
                     "type": "address"
                 }
             ],
@@ -239,6 +285,11 @@
                 {
                     "internalType": "address",
                     "name": "patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
                     "type": "address"
                 }
             ],
@@ -281,7 +332,13 @@
         },
         {
             "constant": true,
-            "inputs": [],
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
+                }
+            ],
             "name": "patient_last_transaction",
             "outputs": [
                 {
@@ -306,6 +363,11 @@
                     "internalType": "uint256",
                     "name": "amount",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "payment",
@@ -322,7 +384,13 @@
         },
         {
             "constant": true,
-            "inputs": [],
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
+                }
+            ],
             "name": "role_define",
             "outputs": [
                 {
@@ -341,6 +409,11 @@
                 {
                     "internalType": "address",
                     "name": "_doctor_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
                     "type": "address"
                 }
             ],
@@ -382,6 +455,11 @@
                 {
                     "internalType": "address",
                     "name": "_patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
                     "type": "address"
                 }
             ],
@@ -465,6 +543,11 @@
                     "internalType": "address",
                     "name": "_patient_hash",
                     "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "view_patient_details",
@@ -526,6 +609,11 @@
                     "internalType": "uint256",
                     "name": "number",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "view_prescription_by_doctor",
@@ -567,6 +655,11 @@
                     "internalType": "uint256",
                     "name": "number",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "view_prescription_by_pathlab",
@@ -608,6 +701,11 @@
                     "internalType": "uint256",
                     "name": "number",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "owner_hash",
+                    "type": "address"
                 }
             ],
             "name": "view_prescription_by_pharma",

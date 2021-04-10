@@ -12,7 +12,7 @@ export default function AddPatient({ account }) {
     const pa = useRef()
     const balance = useRef()
 
-    const add = async() => {
+    const add = async() => { 
 
         if (!name.current.value || !hash.current.value || !bgrp.current.value || !dob.current.value || !balance.current.value || !cno.current.value || !pa.current.value || !emergencyCno.current.value) {
             toast.warn('Please specify all the details')
@@ -20,7 +20,7 @@ export default function AddPatient({ account }) {
         }
 
         //api
-        let msg = await hack.methods.add_patient(hash.current.value, name.current.value, dob.current.value, pa.current.value, bgrp.current.value, balance.current.value, cno.current.value, emergencyCno.current.value, 0, 1).send({
+        let msg = await hack.methods.add_patient(hash.current.value, name.current.value, dob.current.value, pa.current.value, bgrp.current.value, balance.current.value, cno.current.value, emergencyCno.current.value, 0, 1,account).send({
             from: account,
             gas: 1000000
         });

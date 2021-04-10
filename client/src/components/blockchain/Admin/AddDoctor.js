@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import { portis, web3, hack } from '../Config'
 
 export default function AddDoctor({ account }) {
-
+ 
     const name = useRef()
     const hash = useRef()
     const spec = useRef()
@@ -19,7 +19,7 @@ export default function AddDoctor({ account }) {
         }
 
         //api
-        let msg2 = await hack.methods.add_doctor(hash.current.value, name.current.value, spec.current.value, cno.current.value, addr.current.value, balance.current.value, 1).send({
+        let msg2 = await hack.methods.add_doctor(hash.current.value, name.current.value, spec.current.value, cno.current.value, addr.current.value, balance.current.value, 1,account).send({
             from: account,
             gas: 1000000
         });

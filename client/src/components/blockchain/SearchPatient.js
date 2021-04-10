@@ -2,14 +2,14 @@ import React, { useState,useRef } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { portis, web3, hack } from './Config'
 
-export default function SearchPatient() {
+export default function SearchPatient({account}) {
 
     const patient_hash_ref = useRef()
 
     const getPatientDetails = () => {
         setShow(1)
         // api
-        hack.methods.view_patient_details(patient_hash_ref.current.value).call((err, res) => {
+        hack.methods.view_patient_details(patient_hash_ref.current.value,account).call((err, res) => {
             if (err) console.log("error in doxcot" ,err)
             else {
                 console.log("result in doctor" ,res);

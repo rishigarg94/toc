@@ -8,7 +8,7 @@ export default function SearchDoctor({account}) {
     const getDoctorDetails = () => {
         setShow(1)
         //api
-        hack.methods.search_doctor(doctor_hash.current.value).call((err, res) => {
+        hack.methods.search_doctor(doctor_hash.current.value,account).call((err, res) => {
             if (err) console.log("error in doxcot" ,err)
             else {
                 console.log("result in doctor" ,res);

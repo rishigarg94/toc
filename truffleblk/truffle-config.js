@@ -1,3 +1,39 @@
+// const HDWalletProvider = require('truffle-hdwallet-provider');
+// const fs = require('fs');
+// const mnemonic = fs.readFileSync(".secret").toString().trim();
+
+// module.exports = {
+//   networks: {
+//     development: {
+//       host: "127.0.0.1",     // Localhost (default: none)
+//       port: 8545,            // Standard Ethereum port (default: none)
+//       network_id: "*",       // Any network (default: none)
+//     },
+//     matic: {
+//       provider: () => new HDWalletProvider(mnemonic, `https://rpc-https://explorer-mumbai.maticvigil.com/tx/0xe7c628f97b74410f0cde9e2b97f03ae3c925d9324b459ee422f9070946c3ec48`),
+//       network_id: 80001,
+//       confirmations: 2,
+//       timeoutBlocks: 200,
+//       skipDryRun: true
+//     },
+//   },
+//   //0xe7c628f97b74410f0cde9e2b97f03ae3c925d9324b459ee422f9070946c3ec48
+//   // Set default mocha options here, use special reporters etc.
+//   mocha: {
+//     // timeout: 100000
+//   },
+
+//   // Configure your compilers
+//   compilers: {
+//     solc: {
+//     }
+//   }
+// }
+
+
+
+
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,

@@ -4,14 +4,14 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default function GivePrescription({account}) {
-    const accNo = useRef()
+    const accNo = useRef() 
     const [desc, setDesc] = useState("")
 
     const sendPrescription = async() => {
         let msg = await hack.methods.give_prescription(account, accNo.current.value,desc).send({
             from: account,
             gas: 1000000
-        });
+        }); 
 
         console.log(msg);
     }
