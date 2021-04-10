@@ -103,35 +103,35 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar
-                    sticky="top"
-                    collapseOnSelect
-                    expand="lg"
-                    variant="dark"
-                    bg='dark'
-                    className="style top-bottom"
-                    id="navbar"
-                >
-                    <Navbar.Brand href="/" className="title-nav">
-                        E-Administration
+                sticky="top"
+                collapseOnSelect
+                expand="lg"
+                variant="dark"
+                bg='dark'
+                className="style top-bottom"
+                id="navbar"
+            >
+                <Navbar.Brand href="/" className="title-nav">
+                    E-Administration
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link eventKey="blogs" hresname="nav-items" href="/blogs">
-                                Home
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link eventKey="blogs" hresname="nav-items" href="/blogs">
+                            Home
                             </Nav.Link>
-                            <Nav.Link eventKey="sponsors" href="/sponsors" className="nav-items">
-                                Sponsors
+                        <Nav.Link eventKey="sponsors" href="/sponsors" className="nav-items">
+                            Sponsors
                             </Nav.Link>
-                        </Nav>
-                        {
-                            account ?
-                                <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={handleLogout}>Logout</Button>
-                                :
-                                <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={connectToPortis}>Portis</Button>
-                        }
-                    </Navbar.Collapse>
-                </Navbar>
+                    </Nav>
+                    {
+                        account ?
+                            <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={handleLogout}>Logout</Button>
+                            :
+                            <Button className='mr-sm-2 my-2 right-btn btn-danger' size='lg' onClick={connectToPortis}>Portis</Button>
+                    }
+                </Navbar.Collapse>
+            </Navbar>
             <div className="container-fluid">
                 <div class="sidebar-container">
                     <Accordion className='sidebar-navigation'>

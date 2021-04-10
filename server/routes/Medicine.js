@@ -59,3 +59,5 @@ router.delete("/medicines/:id", (req, res) => {
         }
     });
 });
+
+module.exports = router

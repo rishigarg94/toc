@@ -6,10 +6,22 @@ import DashboardPage from '../components/DashboardPage';
 import LoginRegisterPage from '../components/LoginRegisterPage';
 import NotFoundPage from '../components/NotFoundPage';
 import Dashboard from '../components/blockchain/Dashboard';
+import { ToastContainer } from 'react-toastify';
 
 
 const AppRouter = () => (
     <BrowserRouter>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
         <Route>
             <Header />
             <Switch>

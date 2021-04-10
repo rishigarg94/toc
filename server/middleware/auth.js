@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 
 exports.signupNormal = (req, res) => {
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
     const { fname, lname, email, password } = req.body
     User.findOne({ email: email })
         .then((savedUser) => {
@@ -32,6 +33,7 @@ exports.signupNormal = (req, res) => {
         })
 };
 exports.signupGoogle = (req, res) => {
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
     const user = new User(req.body);
     user.save((err, newUser) => {
         if (!newUser)
@@ -41,22 +43,21 @@ exports.signupGoogle = (req, res) => {
 };
 
 exports.signinGoogle = (req, res) => {
-    const { email, password } = req.body;
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+    const { email, lname, fname } = req.body;
 
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                error: "Email or password do not match !",
+                error: "Error Logging in !",
             });
         }
-        if (!user.password)
+        if (user.password)
             return res.status(401).json({ error: "Already signed in !" });
 
-        if (!user.autheticate(password)) {
-            return res.status(401).json({
-                error: "Email or password do not match !",
-            });
-        }
+        if (fname !== user.fname || lname !== user.lname)
+            return res.status(401).json({ error: "Error Logging in !" });
+
         // create jwt token
         const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
         // put token in cookie
@@ -65,26 +66,25 @@ exports.signinGoogle = (req, res) => {
 }
 
 exports.signinNormal = (req, res) => {
+    res.setHeader("Access-Control-Expose-Headers", "Content-Range");
     const { email, password } = req.body;
 
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                error: "Email or password do not match !",
+                error: "Wrong username or password !",
             });
         }
-        if (user.password)
+        if (!user.password)
             return res.status(401).json({ error: "Already signed in !" });
 
-        if (!user.autheticate(password)) {
-            return res.status(401).json({
-                error: "Email or password do not match !",
-            });
-        }
-        // create jwt token
-        const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-        // put token in cookie
-        res.json({ token: jwtToken, message: "LoggedIn Successfully !", user });
+        bcrypt.compare(password, user.password).then(doMatch => {
+            if (doMatch) {
+                const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+                res.json({ token: jwtToken, message: "LoggedIn Successfully !", user });
+            }
+            return res.status(422).json({ error: "Wrong username or password !" })
+        })
     })
 }
 
