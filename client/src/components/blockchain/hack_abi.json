@@ -1,0 +1,641 @@
+{
+    "hack_abi": [
+        {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_doctor_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "specialisation",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "phone_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "address_of_doctor",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "flag",
+                    "type": "uint256"
+                }
+            ],
+            "name": "add_doctor",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "temp_address",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "phone_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "flag",
+                    "type": "uint256"
+                }
+            ],
+            "name": "add_path",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "dob",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "prev_allergies",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "blood_group",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "emergency_contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "description_length",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "patient_flag",
+                    "type": "uint256"
+                }
+            ],
+            "name": "add_patient",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "temp_address",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "phone_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "flag",
+                    "type": "uint256"
+                }
+            ],
+            "name": "add_pharmacy",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "_bytes32",
+                    "type": "bytes32"
+                }
+            ],
+            "name": "bytes32ToString",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "patient_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "get_total_number_of_prescriptions_by_pathalogy",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "total_count",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "patient_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "get_total_number_of_prescriptions_by_pharma",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "total_count",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_doctor_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_details_of_prescription",
+                    "type": "string"
+                }
+            ],
+            "name": "give_prescription",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "patient_last_transaction",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "code",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "reciever_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "payment",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "code",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "role_define",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "role_id",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_doctor_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "search_doctor",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "doctor_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "doctor_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "doctor_address",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "doctor_phone_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "doctor_speciality",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "show_self_deatils",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_dob",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_previous_allergies",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_blood_group",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_emergency_contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "patient_balance",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "patient_prescription_length",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "source",
+                    "type": "string"
+                }
+            ],
+            "name": "stringToBytes32",
+            "outputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "result",
+                    "type": "bytes32"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                }
+            ],
+            "name": "view_patient_details",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_dob",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_previous_allergies",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_blood_group",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_emergency_contact_number",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "patient_prescription_length",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "number",
+                    "type": "uint256"
+                }
+            ],
+            "name": "view_prescription_by_doctor",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "doctor_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "time_prescribed",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "number",
+                    "type": "uint256"
+                }
+            ],
+            "name": "view_prescription_by_pathlab",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "doctor_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "time_prescribed",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_patient_hash",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "number",
+                    "type": "uint256"
+                }
+            ],
+            "name": "view_prescription_by_pharma",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "doctor_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "patient_prescribed",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "time_prescribed",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}
