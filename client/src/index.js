@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { SpeechProvider } from '@speechly/react-client';
 
+
+
 ReactDOM.render(
   <React.StrictMode>
     <SpeechProvider appId="c70cfcc6-1459-4bf0-8ece-803ad99913b2" language="en-US">
