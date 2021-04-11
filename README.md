@@ -1,5 +1,5 @@
-<h1 align="center">Hack36 Template Readme</h1>
-<p align="center">
+<h1 align="center">The_Organised_Chaos</h1>
+<p align="center">Milo-Medicare
 </p>
 
 <a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
