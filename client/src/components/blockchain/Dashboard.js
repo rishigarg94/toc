@@ -70,7 +70,7 @@ const Dashboard = () => {
     const handleLogout = async () => {
         // portis.logout()
         let accounts = await web3.eth.getAccounts();
-        setAccount(accounts[0])
+        setAccount(accounts[3])
         // console.log("recent account is ",account);
 
         // await hack.methods.get_msg_sender().call((err,res) =>{
