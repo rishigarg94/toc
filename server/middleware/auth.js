@@ -68,18 +68,18 @@ exports.signinNormal = (req, res) => {
     res.setHeader("Access-Control-Expose-Headers", "Content-Range");
     const { email, password } = req.body;
 
-    User.findOne({ email }, (err, user) => {
-        if (err || !user) {
+    User.findOne({ email }, (err, savedUser) => {
+        if (err || !savedUser) {
             return res.status(400).json({
                 error: "Wrong username or password !",
             });
         }
-        if (!user.password)
+        if (!savedUser.password)
             return res.status(401).json({ error: "Already signed in !" });
 
-        bcrypt.compare(password, user.password).then(doMatch => {
+        bcrypt.compare(password, savedUser.password).then(doMatch => {
             if (doMatch) {
-                const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+                const jwtToken = jwt.sign({ _id: savedUser._id }, process.env.JWT_SECRET);
                 res.json({ token: jwtToken, message: "LoggedIn Successfully !", user: { fname: savedUser.fname, lname: savedUser.lname, email: savedUser.email, isPremiumed: savedUser.isPremiumed } });
             }
             return res.status(422).json({ error: "Wrong username or password !" })
