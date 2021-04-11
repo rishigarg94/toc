@@ -16,21 +16,24 @@ const Pharmacy = () => {
             })
     }, [])
 
-    useEffect(() => {
+    useEffect(async() => {
+        console.log(segment);
         if (segment) {
-            if (segment.intent.intent === 'search_medicine') {
-                segment.entities.forEach(e => {
+            console.log("hi")
+
+            if (segment.intent.intent === 'search') {
+                segment.entities.forEach((e) => {
                     setMedicines1(prev => prev.filter(item => item.name === e.value || item.tags.includes(e.value)))
                     // setMedicines1(prev => prev.filter(item => item.tags.includes(e.value)))
                     // e.type
                 })
                 // if()
             }
-            else if (segment.intent.intent === 'reset') {
-                segment.entities.forEach(e => {
-                    if (e.value = 'reset_voice') setMedicines1(medicines)
-                })
-            }
+            // else if (segment.intent.intent === 'search') {
+            //     segment.entities.forEach((e) => {
+            //         if (e.value = 'reset') setMedicines1(medicines)
+            //     })
+            // }
         }
     }, [segment])
 

@@ -20,7 +20,7 @@ const Dashboard = () => {
     const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user'))?.email || '')
 
     useEffect(() => {
-        console.log(segment)
+        //console.log(segment)
     }, [segment])
     useEffect(() => {
         setFname(JSON.parse(localStorage.getItem('user'))?.fname || '')
