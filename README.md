@@ -18,7 +18,7 @@
 5. Make `same port` for ganache and metamask.
   
 ## Demo Video Link:
-  <a href="https://drive.google.com/file/d/17-ZRarylj0QZP5eu1ZiZzkWdPAjOKqL8/view?usp=sharing">Goodle Drive Video Link</a>
+  <a href="https://drive.google.com/file/d/17-ZRarylj0QZP5eu1ZiZzkWdPAjOKqL8/view?usp=sharing">Google Drive Video Link</a>
   
 ## Presentation Link:
   <a href="https://drive.google.com/file/d/1enm1A07eSM7LEPu9Uez7Jiz1afzyZ7vI/view?usp=sharing"> ppt link here </a>
