@@ -1,12 +1,21 @@
-<h1 align="center">The_Organised_Chaos</h1>
-<p align="center">Milo-Medicare
+<div align="center">
+<h1>The_Organised_Chaos</h1><br />
+<hr />
+<p>Milo-Medicare
 </p>
 
 <a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
+<hr />
 
+# Introduction:
+<hr />
 
-## Introduction:
-  Intro of the project
+## How to install
+1. Clone the repository
+2. Run `npm i` in /server and /client directory via console.
+3. In /server run `node app.js` and in /client run `npm start` in console.
+4. For blockchain install `ganache`, `metamask plugin`.
+5. Make `same port` for ganache and metamask.
   
 ## Demo Video Link:
   <a href="#">Youtube</a>
@@ -47,3 +56,4 @@ Team Name: The_organised_chaos
 
 ### Made at:
 <a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
+</div>
